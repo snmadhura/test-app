@@ -14,7 +14,7 @@ import './assets/scss/_navbar.scss';
 import './assets/scss/_portfolio.scss';
 import './assets/scss/_variables.scss';
 import './assets/scss/freelancer.scss';
-import Header from './Header/Header';
+import Header from './Layout/Header/Header';
 
 class App extends Component {
   render() {
