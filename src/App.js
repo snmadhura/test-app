@@ -6,6 +6,7 @@ import ProjectPortfolio from './ProjectPortfolio/ProjectPortfolio';
 import Contact from './Contact/Contact';
 import Footer from './Layout/Footer/Footer';
 import About from './About/About';
+import Modals from './Layout/UI/Modals/Modals';
 
 class App extends Component {
   

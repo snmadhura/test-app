@@ -1,0 +1,11 @@
+.porfolio{
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 0 2px 2px #666;
+    background-color:#18bc9c;
+    color: #fff;
+}
+
+.porfolio p {
+    color: rgb(68, 68, 68);
+}
