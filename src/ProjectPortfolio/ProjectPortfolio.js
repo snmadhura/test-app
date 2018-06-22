@@ -9,33 +9,43 @@ class projectPortfolio extends Component {
 
     state = {
         projectData: [],
-        display : true
+        display : false
     }
 
-// modalHandler = () =>{
-//     const modalDisplay = this.state.display;
-    
-// }
+displayInfoHandler = (data) =>{
+    console.log(data.id);
+    axios.get(' https://jsonplaceholder.typicode.com/posts/' + data.id)
+    .then((response) => {
+  //  console.log(response.data);
+    this.setState({display:true});
+
+})
+}
+modalCloseHandler = () =>{
+    this.setState({display:false}); 
+}
 
     render() {
-        axios.get('http://www.json-generator.com/api/json/get/cgtMythDDm?indent=2')
+        axios.get('https://jsonplaceholder.typicode.com/posts')
             .then((response) => {
                 //console.log(response.data)
-                this.setState({ projectData: response.data });
+                const compData = response.data.slice(0,6);
+                this.setState({ projectData: compData });
                 // console.log(this.state.projectData);
             });
         return (
-            this.state.projectData.map((data) => {
+            this.state.projectData.map((data,i) => {
                 return (
-                    <Aux>
-                        <div className="col-sm-12 col-md-3 col-lg-3 porfolio" key={data._id}>
-                            <h4>{data.company}</h4>
-                            <p>Project by <strong>{data.name}</strong></p>
-
+                    <Aux key={i}>
+                        <div className="col-sm-12 col-md-6 col-lg-6 porfolio" >
+                            <h4>{data.title}</h4>
+                            {/* <p>Project by <strong>{data.name}</strong></p> */}
+                            <button onClick={() => this.displayInfoHandler(data)} >View</button>
                         </div>
-                        <Modal show={this.state.display} modalClosed={this.modalHandler}>
+                        <Modal show={this.state.display}  >
                            
-                        <p>Project by <strong>{data.name}</strong></p>
+                        <p>Project by <strong>{data.title}</strong></p>
+                        <button onClick={this.modalCloseHandler}>Close</button>
                             
                         </Modal>
                     </Aux>
