@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './projectPortfolio.css';
 import Aux from '../Auxilliary/Auxilliary';
+//import ProjectDetails from '';
+import Modal from '../Layout/UI/Modals/Modals';
 
 class projectPortfolio extends Component {
 
     state = {
         projectData: [],
-        display : false
+        display : true
     }
 
-modalHandler = () =>{
-    const modalDisplay = this.state.display;
+// modalHandler = () =>{
+//     const modalDisplay = this.state.display;
     
-}
+// }
 
     render() {
         axios.get('http://www.json-generator.com/api/json/get/cgtMythDDm?indent=2')
@@ -32,8 +34,9 @@ modalHandler = () =>{
 
                         </div>
                         <Modal show={this.state.display} modalClosed={this.modalHandler}>
-                            <ProjectDetails />
-                            create above component and do maja
+                           
+                        <p>Project by <strong>{data.name}</strong></p>
+                            
                         </Modal>
                     </Aux>
                 );
