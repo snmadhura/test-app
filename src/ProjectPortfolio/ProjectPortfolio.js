@@ -5,6 +5,11 @@ import Aux from '../Auxilliary/Auxilliary';
 //import ProjectDetails from '';
 import Modal from '../Layout/UI/Modals/Modals';
 
+
+
+// try to add some api, scrivito
+
+
 class projectPortfolio extends Component {
 
     state = {
@@ -42,12 +47,7 @@ modalCloseHandler = () =>{
                             {/* <p>Project by <strong>{data.name}</strong></p> */}
                             <button onClick={() => this.displayInfoHandler(data)} >View</button>
                         </div>
-                        <Modal show={this.state.display}  >
-                           
-                        <p>Project by <strong>{data.title}</strong></p>
-                        <button onClick={this.modalCloseHandler}>Close</button>
-                            
-                        </Modal>
+                        <projectDetails clicked={this.displayInfoHandler} />
                     </Aux>
                 );
             })
