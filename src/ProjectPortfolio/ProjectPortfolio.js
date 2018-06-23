@@ -27,11 +27,7 @@ class projectPortfolio extends Component {
 
             });
 
-     //   console.log(this.state.display + " before");
         this.setState({ display: true });
-      //  console.log(this.state.display);
-
-
     }
 
 
@@ -42,19 +38,16 @@ class projectPortfolio extends Component {
     render() {
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then((response) => {
-                // console.log(response.data)
                 const compData = response.data.slice(0, 6);
 
                 this.setState({ projectData: compData });
                 
-                // console.log(typeof(this.state.projectData));
             })
 
 
         return (
 
             this.state.projectData.map((data, i) => {
-                //console.log(i);
                 return (
                     <Aux key={i}>
                         <div className="col-sm-12 col-md-6 col-lg-6 porfolio">
@@ -63,6 +56,7 @@ class projectPortfolio extends Component {
                             <button onClick={() => this.displayInfoHandler(data.id)} >View</button>
                         </div>
                         <Modal show={this.state.display} >
+                        <p></p>
                             <p>Project by <strong>{this.state.updatedData.title}</strong></p>
                             <button onClick={this.modalCloseHandler}>Close</button>
                         </Modal>
