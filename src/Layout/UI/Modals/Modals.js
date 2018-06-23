@@ -1,20 +1,20 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import Aux from '../../../Auxilliary/Auxilliary';
 import './Modal.css';
 
-class Modals extends Component{
-render(){
-  return(
-    <Aux>
-       <div className="Modal" 
-       style={{
-           transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-           opacity: this.props.show ? '1' : '0'
-       }}>
-           {this.props.children}
-       </div>
-
- {/*<div className="portfolio-modal mfp-hide" id="portfolio-modal-2">
+class Modals extends Component {
+  render() {
+    return (
+      <Aux>
+        <div className="Modal"
+          style={{
+            transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+            opacity: this.props.show ? '1' : '0'
+          }}>
+          {this.props.children}
+        </div>
+        
+        {/*<div className="portfolio-modal mfp-hide" id="portfolio-modal-2">
    <div className="portfolio-modal-dialog bg-white">
      <a className="close-button d-none d-md-block portfolio-modal-dismiss" href="/">
        <i className="fa fa-3x fa-times"></i>
@@ -122,9 +122,9 @@ render(){
    </div>
  </div>
 */}
-    </Aux>
-);
-}
+      </Aux>
+    );
+  }
 
 }
 
