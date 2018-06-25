@@ -8,31 +8,32 @@ class projectPortfolio extends Component {
 
     state = {
         projectData: [],
-        display: false,
+        //display: false,
         array: [{
             id: 1, name: 'madhu'
         },
         { id: 2, name: 'someone' }],
-        updatedData: []
+        updatedData: [],
+        activeModal: null
     }
 
-    displayInfoHandler = (data) => {
-        console.log(data);
+    displayInfoHandler = (data, index) => {
+      //  console.log(data);
         axios.get('https://jsonplaceholder.typicode.com/posts/' + data)
             .then((response) => {
                 //   console.log(response.data);
                 //const res = response.data;
                 this.setState({ updatedData: response.data });
-                console.log(this.state.updatedData);
+            //    console.log(this.state.updatedData);
 
             });
-
-        this.setState({ display: true });
+        console.log(index);
+        this.setState({ activeModal: index });
     }
 
 
     modalCloseHandler = () => {
-        this.setState({ display: false });
+        this.setState({ activeModal: null });
     }
 
     render() {
@@ -47,15 +48,15 @@ class projectPortfolio extends Component {
 
         return (
 
-            this.state.projectData.map((data, i) => {
+            this.state.projectData.map((data, index) => {
                 return (
-                    <Aux key={i}>
+                    <Aux key={data.id}>
                         <div className="col-sm-12 col-md-6 col-lg-6 porfolio">
                             <h4>{data.title}</h4>
                             <p>Project by <strong>{'Username' + data.id}</strong></p>
-                            <button onClick={() => this.displayInfoHandler(data.id)} >View</button>
+                            <button onClick={() => this.displayInfoHandler(data.id, index)} >View</button>
                         </div>
-                        <Modal show={this.state.display} >
+                        <Modal show={this.state.activeModal === index}>
                         <p></p>
                             <p>Project by <strong>{this.state.updatedData.title}</strong></p>
                             <button onClick={this.modalCloseHandler}>Close</button>
